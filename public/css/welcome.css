@@ -1,0 +1,91 @@
+body {font-family: 'Merriweather', serif;
+	background-color: #0A0A0A;
+}
+
+h1 {font-family: 'Merriweather', serif;
+	margin-top: 80px;
+
+}
+
+h2 {font-family: 'Merriweather', serif;
+
+}
+
+#page-top > nav {font-family: 'Merriweather', serif;
+}
+
+#page-top > header > div > div > div > div > a {
+	height: 150px;
+	width: 150px;
+}
+
+/*#nissan {height: 150px;
+		 width: 150px;
+		 
+		 border-radius: 50%;
+		 position: relative;
+		 float: left;
+		 top: -8px;
+		 right: 18px;
+
+}
+#nissan:hover {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}*/
+
+.intro {
+	background-image: url(/img/water-drop.jpg);
+	
+
+}
+
+.box {
+	display:inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border: 20px solid #000000;
+    position: relative;
+    border-radius: 25px;
+
+}
+
+/*.box1 {
+	display:inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border: 20px solid #000000;
+    position: relative;
+    border-radius: 25px;
+}*/
+
+.page-header-text {
+	font-size: 50px;
+	margin-top: 20px;
+}
+#contact {
+	padding-top: 0;
+}
+
+#about {
+	padding-top: 70px;
+}
+
+.img-circle {
+	width: 180px;
+	height: 180px;
+}
+
+.btn-circle {
+	border: 0;
+}
+
+.navbar-custom a {
+    color: #42DCA3;
+}
+
+.welcome{
+	text-indent: -9999px;
+} 

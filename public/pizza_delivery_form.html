@@ -1,0 +1,93 @@
+<?php
+  var_dump($_GET);
+  var_dump($_POST);
+?>
+
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Pizza Delivery Order Form</title>
+		</head>
+		<body>
+			<h1>Pizza delivery order form</h1>
+			<form action="http://codeup.dev/pizza_delivery_form.html" method="POST">
+				<p>
+				<label for="size">Select your Pizza Size: </label>
+					<select id="size" name="size">
+						<option>Small $6.99</option>
+						<option>Medium $7.99</option>
+						<option>Large $8.99</option>
+						<option>Extra-Large $9.99</option>
+					</select>
+				</p>
+				<p>
+				<label for="crust">Select crust type: </label>
+					<select id="size" name="size">
+						<option>Thin</option>
+						<option>Thick</option>
+					</select>
+				</p>
+				<p>
+				<label for="toppings">Select your toppings: </label>
+				<br>
+				<br>
+					<select id="toppings" name="toppings[]" multiple>
+						<option value="anchovies">Anchovies</option>
+						<option value="beef">Beef</option>
+						<option value="bacon">Bacon</option>
+						<option value="black olives">Black olives</option>
+						<option value="chicken">Chicken</option>
+						<option value="extra cheese">Extra Cheese</option>
+						<option value="ham">Ham</option>
+						<option value="mushrooms">Mushrooms</option>
+						<option value="onions">Onions</option>
+						<option value="pepperoni">Pepperoni</option>
+						<option value="peppers">Peppers</option>
+						<option value="pesto">Pesto</option>
+						<option value="pineapple">Pineapple</option>
+						<option value="sausage">Sausage</option>
+						<option value="spinach">Spinach</option>
+					</select>
+				</p>
+				<label for="special_dietary_requests">Special Dietary Requests</label>
+				<br>
+				<br>
+				<textarea id="special_dietary_requests" placeholder="Let us know any dietary restrictions in this space"></textarea>
+				<p>
+					<button type=submit>Place order</button>
+				</p>
+			</form>
+
+			<h1>New User Registration Form</h1>
+			<form action="http://codeup.dev/pizza_delivery_form.html" method="POST">
+				<p>
+					<label for="first_name">First Name</label>
+					<input type="text" name="first_name" id="first_name" placeholder="John">
+				</p>
+				<p>
+					<label for="last_name">Last Name</label>
+					<input type="text" name="last_name" id="last_name" placeholder="Watts">
+				</p>
+				<p>
+					<label for="Username">Username</label>
+					<input type="text" name="Username" id="Username" placeholder="Enter your username" required autofocus>
+				</p>
+				<p>
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" placeholder="Enter your password" required>
+				</p>
+
+					<input type="checkbox" id="mailing_list" name="mailing_list" value="yes" checked="yes">
+					<label for="mailing_list">Add me to the mailing list!</label>
+					<br>
+					<br>
+					<label for="fileupload">Select a file to upload as your avatar</label>
+					<input type="file" name="fileupload" value="fileupload" id="fileupload"> 
+
+					<br>
+					<br>
+					<button type=submit>Sign Me Up!</button>
+					</form>
+
+		</body>
+	</html>

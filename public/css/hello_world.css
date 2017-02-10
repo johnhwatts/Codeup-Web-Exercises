@@ -1,0 +1,57 @@
+main {
+	text-align: center;
+	padding: 200px;
+	border: 100px;
+	 
+}
+
+h1, h2 { 
+	color: blue; 
+	text-decoration: underline;
+	/*padding: 10px; 
+	border: 1px solid black;*/
+	}
+body {  
+	font-family: 'Pangolin', cursive; 
+	background-image: url(/img/paper.png);
+	background-color: lightblue; 
+	background-size: cover;
+	}
+table {
+	font-family: 'Pangolin', cursive;
+	/*border-collapse: collapse;*/
+	display: inline-block;
+	}   
+th {text-decoration: underline;
+
+}
+td, tr, {
+	border: 1px solid #dddddd;
+	text-align: center;
+	padding: 8px;
+	}
+em { font-weight: bold; }
+	
+ol { list-style: upper-alpha;
+	 display: inline-block;
+	 } 
+ul { list-style: square; font-size: 20px;
+	 display: inline-block;
+ }
+
+/* unvisited link (: link) */
+a:link { color:#110a0d; }
+
+/* visited link (: visited) */
+a:visited { color:#d28309;
+			font-style: italic; 
+ }
+
+/* mouse hover over link (: hover) */
+a:hover { color:#f9547e;
+		  font-style: italic; 
+	}
+
+#nissan {
+	border-radius: 25px;
+}

@@ -1,0 +1,35 @@
+Review of certain topics
+
+How do I even full stack?
+
+server is a computer that's built to talk to computers
+
+human -> browser -> asks server for stuff -> 
+server -> figure out if/how to send stuff to the human -> browser in HTML/CSS/JS
+
+front-end - stuff in the browser the user sees and interacts with (click links, submit forms)
+		- HTML == "what you say" == content and structure
+		- CSS =="how you say it" == styling and presentation
+		- JS == "how we add interactivity" == how does the stuff in the browser get up and dance == "logic after the page loads"
+
+back-end - server, file system, ways to store data, logic to check that data, logic before the page loads in the browser
+		- Ubuntu linux == operating system for the server (operating systems 
+		- PHP == logic language for programming server-side logic (logic before the page loads)
+		- MySQL == database == place to store stuff and access it later
+
+JSON == specially formatted text that follows very specific rules in order to declare data
+
+ALL CODE IS JUST TEXT
+
+what is a VM ?
+	- a computer inside your computer
+	- running a server, running linux
+	- run windows 
+
+what is vagrant-lamp?
+
+~/vagrant-lamp/
+				README.md	- explains what the vagrant-lamp folder is
+				Vagrantfile - instructions for how to build/provision our VM
+				ansible 	- scripts for configuring our VM server
+				sites/
