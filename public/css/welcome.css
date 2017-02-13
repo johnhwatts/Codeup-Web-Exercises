@@ -73,11 +73,6 @@ h2 {font-family: 'Merriweather', serif;
 	padding-top: 70px;
 }
 
-.img-circle {
-	width: 180px;
-	height: 180px;
-}
-
 .btn-circle {
 	border: 0;
 }
@@ -86,6 +81,11 @@ h2 {font-family: 'Merriweather', serif;
     color: #42DCA3;
 }
 
-.welcome{
+.welcome {
 	text-indent: -9999px;
 } 
+
+#page-top > nav > div > div.navbar-header {
+	width: 100px;
+	height: 100px;
+}
