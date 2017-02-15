@@ -21,7 +21,7 @@ for (var i = 1; i <= 10; i++) {
 var randomNumber;
 
 for (var i = 1; i <=10; i++) {
-	 randomNumber = Math.floor(Math.random() * 180) + 20;
+	 randomNumber = Math.floor(Math.random() * (200 - 20 +1)) + 20;
         // Determine if the number was even or odd.
         if (randomNumber % 2 === 1) {
             console.log(randomNumber + " is odd");
