@@ -26,7 +26,7 @@ function getRandomIntBetween(min, max) {
   return Math.floor(Math.random() * (11 - 1)) + 1;
 }
 
-var result = getRandomIntBetween("");
+var result = getRandomIntBetween();
 	console.log(result);
 
 //Exercise 4
@@ -34,7 +34,7 @@ var result = getRandomIntBetween("");
 function isNumeric(input) {
 		var result;
 
-		if(input  == 0 || input === "") {
+		if(input  === 0 || input === "") {
 			result = true;
 		} else {
 			result = false;
