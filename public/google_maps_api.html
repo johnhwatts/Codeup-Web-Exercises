@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #map-canvas {
+            width: 770px;
+            height: 700px;
+        }
+        .changeTilt {
+            height: 20px;
+            width: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+    <button type = button id="tilt">Click to change tilt!</button>
+    </div>
+    <!-- div to hold map -->
+    <div id="map-canvas"></div>
+
+    <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQtmdm90jTDXfxYs_qzhtLqFxSZk6U8kA"></script>
+
+    <!-- Script to show address on map -->
+    <script type="text/javascript">
+    (function() {
+        "use strict";
+
+        // Set our map options: it's an Object
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 15,
+            // mapTypeId:"satellite",
+            // tilt: 0,
+
+            // This sets the center of the map at our location
+            center: {
+                lat:  29.410326,
+                lng: -98.486765
+            }
+        };
+
+        // Render the map: google is an object, maps is an object, Map is a method as it has parentheses after it
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        document.getElementById("tilt").addEventListener("click", function() {
+            if(map,tilt == 0) {
+                map.setTilt(45);
+            } else {
+                map.setTilt(0);
+            }
+        });
+
+        // Set our address to geocode
+        var address = "1012 S Presa St, San Antonio, TX 78210";
+
+        // Init geocoder object
+        var geocoder = new google.maps.Geocoder();
+        
+        // Geocode our address
+        geocoder.geocode({ "address": address }, function(results, status) {
+
+        // Check for a successful result
+        if (status == google.maps.GeocoderStatus.OK) {
+        
+            // Recenter the map over the address
+            map.setCenter(results[0].geometry.location);
+        } else {
+        
+            // Show an error message with the status if our request fails
+            alert("Geocoding was not successful - STATUS: " + status);
+        }
+    });
+        // When the user clicks the marker, an info window opens.
+        function initMap() {
+        // Create lat and long for our marker position
+        var bite = {lat: 29.410326, lng: -98.486765};
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom:5,
+            center: bite
+        });
+
+        //Create a lot of content in a string
+
+        var contentString ='<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Bite</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Bite</b>, specializes in delicious fare from around the world that will have you questioning all culinary rules. Cotton candy in your mimosa? A lamb egg roll that looks just like a cigar?<p> Think, an intimate 12-table atmosphere with booming pops of colors and art that has you wanting to bring out your own paint and palette. Bite is more than just good food and creative cocktails, it is a place where creative people come together to celebrate life and the best eggs Benedict they’ve ever had.</p> Imagination is poured into every white space on the wall and in between every garnish, roux and chop. Come to Bite, and play with your food. Southtown has never been cooler.</p>';
+
+        // Create a new infoWindow object with content
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        // Add the marker to our existing map
+        var marker = new google.maps.Marker({
+            position: bite,
+            map: map,
+            title: "Bite"
+        });
+
+        // Open the window using our map and marker
+        marker.addListener("click", function(){
+        infowindow.open(map, marker);
+        });
+    }
+    })();
+    </script>
+</body>
