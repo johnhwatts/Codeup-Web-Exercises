@@ -1,7 +1,27 @@
-h1 {
-	text-align: center;
+
+@font-face {
+	font-family: calculatorFont;
+	src: url(calculator.ttf);
 }
 
+
+@font-face {
+	font-family: headingFont;
+	src: url(CooperBlackStd.otf);
+}
+
+
+h1 {
+	text-align: center;
+	font-family: headingFont;
+	font-size: 400%;
+	text-shadow: 5px 5px 10px #888888;
+}
+
+body {
+	background: url(/img/80s_tv.png);
+	background-size: cover;
+}
 .calc {
 
 	height: 410px;
@@ -12,20 +32,8 @@ h1 {
 	background-color: black;
 	border: 2px solid #908b85;
 	border-radius: 20px;
+	box-shadow: 10px 10px 5px #888888;
 }
-
-/*.display {
-	width: 90%;
-	height:60px;
-	border: 1px solid orange;
-	background-color: white;
-	border-radius: 20px;
-	margin:0 auto;
-	font-size: 170%;
-	margin-top: 8px;
-	
-
-}*/
 
 .leftDisplay {
 	width: 35%;
@@ -33,9 +41,12 @@ h1 {
   	margin-left: 10px;
 	border: 2px solid #b4b39d;
 	border-radius: 6px;
-	background-color: white;
+	background-color: #c0c719;
 	float: left;
 	margin-top: 8px;
+	font-size: 30px;
+	text-align: left;
+	font-family: calculatorFont;
 
 }
 
@@ -46,9 +57,12 @@ h1 {
 	margin-right: 5px;
 	border: 2px solid #b4b39d;
 	border-radius: 6px;
-	background-color: white;
+	background-color: #c0c719;
 	float: left;
 	margin-top: 8px;
+	font-size: 30px;
+	font-family: calculatorFont;
+	text-align: center;
 	
 }
 
@@ -58,9 +72,13 @@ h1 {
 	margin-right: 10px;
 	border: 2px solid #b4b39d;
 	border-radius: 6px;
-	background-color: white;
+	background-color: #c0c719;
 	float:left;
 	margin-top: 8px;
+	margin-bottom: 20px;
+	font-size: 30px;
+	font-family: calculatorFont;
+	text-align: right;
 
 }
 
@@ -74,7 +92,9 @@ h1 {
 	margin-right: 10px;
 	display: inline-block;
 	font-size: 170%;
-	border-color: orange;
+	border-color: 10px solid gray;
+	font-family: calculatorFont;
+
 }
 
 .operator {
@@ -88,4 +108,34 @@ h1 {
 	display: inline-block;
 	font-size: 170%;
 	border-color: orange;
+	background-color: orange;
+	font-family: calculatorFont;
+}
+
+.equals {
+	width: 130px;
+	height: 55px;
+	margin-left: 160px;
+	border-radius: 6px;
+	background-color: blue;
+	font-size: 180%;
+	margin-top: 10px;
+	color: white;
+	text-align: center;
+
+}
+
+.clear {
+	width:55px;
+	height:55px;
+	border-radius: 6px;
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+	display: inline-block;
+	font-size: 170%;
+	border-color: red;
+	background-color: red;
+	font-family: calculatorFont;
 }
