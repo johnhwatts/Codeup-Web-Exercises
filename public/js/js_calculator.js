@@ -1,33 +1,70 @@
-"use strict;"
-var display = document.getElementsByClassName("display") [0]; //the zero at the end is because it is a class and comes back as an array 
-var numbers = document.getElementsByClassName("number");
-var operators = document.getElementsByClassName("operator");
+"use strict";
+		
+		var leftDisplay = document.getElementById("leftDisplay");
+		var centerDisplay = document.getElementById("centerDisplay");
+		var rightDisplay = document.getElementById("rightDisplay");
 
-function displayNumber(){
-	display.value += this.innerText;
+		var numbers = document.getElementsByClassName("numbers");
+
+		function displayNumber() {
+			// append the display's inner text with the innerText of the button clicked
+			
+			if (centerDisplay.innerText == "" && leftDisplay.innerText == "") {
+				leftDisplay.innerText += this.innerText;
+			} else {
+				rightDisplay.innerText += this.innerText;
+			}
+		}
+
+		for(var i = 0; i < numbers.length; i++) {
+			numbers[i].addEventListener("click", displayNumber);
+
+		}
+
+ 
+function math() {
+	
+	var result;
+	switch (centerDisplay.innerText) {
+		case "+": 
+			result = parseInt(leftDisplay.innerText) + parseInt(rightDisplay.innerText);
+			break;
+		case "-":
+			result = parseInt(leftDisplay.innerText) - parseInt(rightDisplay.innerText);
+			break;
+		case "*":
+			result = parseInt(leftDisplay.innerText) * parseInt(rightDisplay.innerText);
+			break;
+		case "/":
+			result = parseInt(leftDisplay.innerText) / parseInt(rightDisplay.innerText);
+			break;
+	}
+}
+		document.getElementById("equals").addEventListener("click", math);	
+
+function clear () {
+	
+	centerDisplay.innerText = "";
+	leftDisplay.innerText = "";
+	rightDisplay.innerText = "";
+
+	leftDisplay.innerText = result;
 }
 
-for(var i = 0; i < numbers.length; i++) {
-	numbers[i].addEventListener("click", displayNumber); 
-	console.log(numbers[i]);
-}
-
-document.getElementById("clear").addEventListener("click", function() {
-	display.innerText = "";
-});
+document.getElementById("clear").addEventListener("click", clear);
 
 document.getElementById("plus").addEventListener("click", function() {
-	display.innerText = "+";
+	centerDisplay.innerText = "+";
 })
 
 document.getElementById("minus").addEventListener("click", function() {
-	display.innerText = "-";
+	centerDisplay.innerText = "-";
 })
 
 document.getElementById("multiply").addEventListener("click", function() {
-	display.innerText = "*";
+	centerDisplay.innerText = "*";
 })
 
 document.getElementById("divide").addEventListener("click", function() {
-	display.innerText = "/";
+	centerDisplay.innerText = "/";
 })
