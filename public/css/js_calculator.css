@@ -1,0 +1,87 @@
+h1 {
+	text-align: center;
+}
+
+.calc {
+
+	height: 410px;
+	width: 300px;
+	margin-top: 5%;
+	position:relative;
+	left: 23%;
+	background-color: black;
+	border: 2px solid #908b85;
+	border-radius: 20px;
+}
+
+.display {
+	width: 90%;
+	height:60px;
+	border: 1px solid orange;
+	background-color: white;
+	border-radius: 20px;
+	margin:0 auto;
+	font-size: 170%;
+	
+
+}
+
+.leftDisplay {
+	width: 35%;
+	height: 55px;
+  	margin-left: 10px;
+	border: 2px solid #b4b39d;
+	border-radius: 6px;
+	background-color: white;
+	float: left;
+
+}
+
+.centerDisplay {
+	width: 15%;
+	height: 55px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: 2px solid #b4b39d;
+	border-radius: 6px;
+	background-color: white;
+	float: left;
+	
+}
+
+.rightDisplay {
+	width: 35%;
+	height: 55px;
+	margin-right: 10px;
+	border: 2px solid #b4b39d;
+	border-radius: 6px;
+	background-color: white;
+	float:left;
+
+}
+
+.numbers {
+	width:55px;
+	height:55px;
+	border-radius: 6px;
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+	display: inline-block;
+	font-size: 170%;
+	border-color: orange;
+}
+
+.operator {
+	width:55px;
+	height:55px;
+	border-radius: 6px;
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+	display: inline-block;
+	font-size: 170%;
+	border-color: orange;
+}

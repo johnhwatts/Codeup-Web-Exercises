@@ -24,7 +24,11 @@
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
-
+    <button id="btn1">Click Me!</button>
+    <button id="btn2">Click Me!</button>
+    <button id="btn3">Click Me!</button>
+    <button id="btn4">Click Me!</button>
+    
 <script>
     (function() {
         "use strict";
@@ -32,16 +36,16 @@
         var mainHeader = document.getElementById("main-header");
             console.log(mainHeader);
 
-        // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-        mainHeader.innerHTML = "JavaScript is Cool";
-            console.log(mainHeader.innerHTML);
+        // // TODO: Set inner html of mainHeader to "JavaScript is Cool"
+        // mainHeader.innerHTML = "JavaScript is Cool";
+        //     console.log(mainHeader.innerHTML);
 
         // TODO: Uncomment the next line and get the sub header element by id
         var subHeader = document.getElementById("sub-header");
             console.log(subHeader);
 
         // TODO: Set the text color of subHeader to blue
-        subHeader.style.color = "blue";
+        // subHeader.style.color = "blue";
 
         // TODO: Uncomment the next line and get all list items
         var listItems = document.getElementsByTagName("li");
@@ -56,6 +60,12 @@
         // TODO: Set text color of li with dbid = 1 to blue
             listItems[0].style.color = "blue";
 
+        // for (var i = 0; i < listItems.length; i++) {
+        //     if (listItems[i]).getAttribute("data-dbid" == 1) {
+
+        //     }
+
+
 
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
         var subParagraphs = document.getElementsByClassName('sub-paragraph');
@@ -63,6 +73,21 @@
 
         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
         subParagraphs[0].innerHTML = "Mission Accomplished!";
+
+        document.getElementById('btn1').addEventListener("click", function() {
+            document.getElementById("main-header").innerHTML = "JavaScript is Cool";
+        });
+
+        document.getElementById('btn2').addEventListener("click", function() {
+            document.getElementById("sub-header").style.color = "pink";
+        });
+       
+       document.getElementById('btn3').addEventListener("click", function() {
+            document.getElementById("main-header").innerHTML = "JavaScript is Cool";
+        });
+
+
+
 
     })();
 </script>
