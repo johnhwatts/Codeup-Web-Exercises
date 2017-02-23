@@ -24,7 +24,8 @@
 
             <h1 id=heading>Fun with jQuery</h1>
 
-            <p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It was released in January 2006 at BarCamp NYC by John Resig. jQuery - Wikipedia, the free encyclopedia</p><p>jQuery is the most widely used JavaScript library on the internet today.</p>
+            <p class=p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It was released in January 2006 at BarCamp NYC by John Resig. jQuery - Wikipedia, the free encyclopedia</p>
+            <p>jQuery is the most widely used JavaScript library on the internet today.</p>
             <p>
                 <ul>
                     <h2 id=selectors>Selectors</h2>
@@ -38,15 +39,31 @@
                 
             </div>
 
-            <script>
+        <script>
+        
         "use strict";
 
+        
         $(document).ready(function() {
-            var contents = $('#selectors').html();
-            alert(contents);
-
-            alert($("#heading").html());
+            $('.listElements').css('font-size', '20px');
+            $('.listElements').css('background-color', 'yellow');
         });
+
+        $(document).ready(function() {
+            $('#heading').css('background-color', 'yellow');
+            $('.p').css('background-color', 'purple');
+
+        });
+
+        $(document).ready(function() {
+            var contents = $('#heading').html();
+            alert(contents);
+        });
+
+
+       
+
+
         </script>
 
     </body>
