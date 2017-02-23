@@ -40,22 +40,24 @@
             </div>
 
         <script>
+        $(document).ready(function() {
         
         "use strict";
 
         
-        $(document).ready(function() {
+        
             $('.listElements').css('font-size', '20px');
             $('.listElements').css('background-color', 'yellow');
-        });
+            //multiple css properties
+            $('#heading').css({
+                'background-color': 'yellow',
+                'text-decoration': 'underline',
+            });
 
-        $(document).ready(function() {
-            $('#heading').css('background-color', 'yellow');
-            $('.p').css('background-color', 'purple');
 
-        });
 
-        $(document).ready(function() {
+            $('.p').css('background-color', 'violet');
+
             var contents = $('#heading').html();
             alert(contents);
         });
