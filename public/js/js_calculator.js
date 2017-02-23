@@ -12,9 +12,21 @@ function displayNumber() {
 	// append the display's inner text with the innerText of the button clicked
 	
 	if (centerDisplay.innerText == "") {
-		leftDisplay.innerText += this.innerText;
+		if(this.innerText == "."){
+			if(leftDisplay.innerText.indexOf(".") == -1){
+				leftDisplay.innerText += this.innerText;
+			}
+		}else{
+			leftDisplay.innerText += this.innerText;
+		}
 	} else {
-		rightDisplay.innerText += this.innerText;
+		if(this.innerText == "."){
+			if(rightDisplay.innerText.indexOf(".") == -1){
+				rightDisplay.innerText += this.innerText;
+			}
+		}else{
+			rightDisplay.innerText += this.innerText;
+		}
 	}
 }
 	

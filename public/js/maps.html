@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #map-canvas {
+            width: 770px;
+            height: 481px;
+        }
+        .changeTilt {
+            height: 20px;
+            width: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+    <button id="changeTilt">Click to change tilt!</button>
+    </div>
+    <!-- div to hold map -->
+    <div id="map-canvas"></div>
+
+    <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQtmdm90jTDXfxYs_qzhtLqFxSZk6U8kA"></script>
+
+    <!-- Script to show address on map -->
+    <script type="text/javascript">
+    (function() {
+        "use strict";
+
+        // Set our map options: it's an Object
+        var mapOptions = {
+            // Set the zoom level
+            zoom: 19,
+            mapTypeId:"satellite",
+            tilt: 0,
+
+            // This sets the center of the map at our location
+            center: {
+                lat:  29.426791,
+                lng: -98.489602
+            }
+        };
+
+        // Render the map: google is an object, maps is an object, Map is a method as it has parentheses after it
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        document.getElementById("tilt").addEventListener("click", function() {
+            if(map,tilt == 0) {
+                map.setTilt(45);
+            } else {
+                map.setTilt(0);
+            }
+        });
+    })();
+    </script>
+</body>
