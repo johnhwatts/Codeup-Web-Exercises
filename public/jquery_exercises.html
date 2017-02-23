@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-    </head>
-    <body>
+        <title>jQuery exercises</title>
+
         <!-- jQuery script -->
         <script
           src="http://code.jquery.com/jquery-2.2.4.min.js"
           integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
           crossorigin="anonymous">
         </script>
+    
+    </head>
+    <body>
+
         
-        <script>
+        
+       <!--  <script>
             $(document).ready(function() {
                 alert("Dom loaded");
+        })
+        </script> -->
+            <div class=container>
 
-            })
+            <h1 id=heading>Fun with jQuery</h1>
+
+            <p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It was released in January 2006 at BarCamp NYC by John Resig. jQuery - Wikipedia, the free encyclopedia</p><p>jQuery is the most widely used JavaScript library on the internet today.</p>
+            <p>
+                <ul>
+                    <h2 id=selectors>Selectors</h2>
+                    <li class=listElements>ID Selector #id — Selects a single element with the given id attribute.</li>
+                    <li class=listElements>Class Selector .class — Selects all elements with the given class.</li>
+                    <li class=listElements>Element Selector element — Selects all elements with the given tag name.</li>
+                    <li class=listElements>Multiple Selector selector1, selector2, selectorN — Selects the combined results of all the specified selectors.</li>
+                    <li class=listElements>All Selector * — Selects all elements.</li>
+                </ul>
+            </p>
+                
+            </div>
+
+            <script>
+        "use strict";
+
+        $(document).ready(function() {
+            var contents = $('#selectors').html();
+            alert(contents);
+
+            alert($("#heading").html());
+        });
         </script>
 
     </body>
