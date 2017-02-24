@@ -92,7 +92,7 @@
 	        	$("dd").addClass("invisible");
 	        	$('#show-answers').click(function(event) {	
         		// event.preventDefault();
-        		$("dd").toggle();
+        		$("dd").fadeToggle();
 
         		
     			});
@@ -103,10 +103,9 @@
         		
         		});
 
-        		$("li").click(function(event) {
-        			$(this).parent().hide();
+        		$("h3").click(function(event) {
+        			$("ul").fadeToggle();
         		});
-
 
 	    	});
 
