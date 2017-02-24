@@ -7,6 +7,11 @@
           integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
           crossorigin="anonymous">
         </script>
+        <script 
+          src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  		  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  		  crossorigin="anonymous">
+  		</script>
 
         <style type="text/css">
         	.invisible {
@@ -51,17 +56,56 @@
 			<dt>What do I need to know about driving off road in national parks?</dt>
 			<dd>Before you head out, check with the national parks that you intend to visit. In many national parks, off-road driving is illegal. Where off-road driving is allowed, the National Park Service regulates it.</dd>
 		</dl>
+		<h3>Yellowstone</h3>
+		<ul class="park">
+		    <li>World’s First National Park</li>
+		    <li>3,472 square miles or 8,987 square km</li>
+		    <li>A designated World Heritage Site and designated Biosphere Reserve</li>
+		    <li>Highest Point: 11,358 ft / 3,462 m (Eagle Peak)</li>
+		   
+		</ul>
+		<h3>Yosemite</h3>
+		<ul class="park">
+		    <li>The park ranges in elevation from 2,000 to over 13,000 feet.</li>
+		    <li>The park is located in California, about 3 ½ hours from San Francisco and 6 hours from Los Angeles.</li>
+		    <li> It is home to three of the world’s 10 highest waterfalls and one of the world’s largest trees, “The Grizzly Giant.”</li>
+		    <li>it contains thousands of types of plants and wildflowers, some of which are rare to the region.</li>
+		    
+		</ul>
+		<h3>Joshua Tree</h3>
+		<ul class="park">
+		    <li>Legend says that Mormon travelers named the iconic Joshua tree after the biblical figure of Joshua.</li>
+		    <li>Two distinct desert ecosystems, the Mojave and the Colorado, come together in Joshua Tree National Park.</li>
+		    <li>Human history in the Joshua Tree region stretches back well over 5,000 years.</li>
+		    <li>There are 813 known varieties of vascular plants in the park.\</li>
+		   
+		</ul>
+
+
 		
 		<script>
+
 			"use strict";
 
 	        $(document).ready(function() {
 
 	        	$("dd").addClass("invisible");
-	        	$('#show-answers').click(function(event) {
-        		event.preventDefault();
-        		$("dd").toggleClass("invisible");
-    });
+	        	$('#show-answers').click(function(event) {	
+        		// event.preventDefault();
+        		$("dd").toggle();
+
+        		
+    			});
+
+	        	$("ul").each(function(index) {
+        			
+        			$(this).children().first().css("font-weight","bold");
+        		
+        		});
+
+        		$("li").click(function(event) {
+        			$(this).parent().hide();
+        		});
 
 
 	    	});
