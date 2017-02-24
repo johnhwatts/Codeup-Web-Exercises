@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Konami Code</title>
+        <script src="http://code.jquery.com/jquery-2.2.4.min.js"
+          integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+          crossorigin="anonymous">></script>
+        
+        <script>
+            "use strict";
+
+            //variable for keys allowed
+            var allowedKeys = {
+                37: "left",
+                38: "up",
+                39: "right",
+                40: "down",
+                65: "a",
+                66: "b",
+            };
+            //konami code
+            var konami = ["up", "up","down","down", "left", "right", "left", "right", "b", "a"]
+            //variable to remember position user has reached
+            var userPosition = 0;
+
+            //event listener to catch every key pressed(keydown)
+            $(document).keydown(function(event){
+                //find out what key was pressed
+                var key = allowedKeys[event.keyCode];
+                //find out what key is needed for the code
+                var requiredKey = konami[userPosition];
+                //compare key pressed with key required for the code
+                if(key == requiredKey) {
+                //if correct key is pressed move to next key in code
+                    userPosition++;
+                //if user gets to last key, activate effects
+                if(userPosition == konami.length)
+                    activateEffects();
+                //or return key position to 0
+                } else
+                    userPosition = 0
+            });
+            //function for activateEffects with effects inside
+            function activateEffects() {
+                $("body").html("<img src=\"/img/congrats.gif\">");
+            }
+        </script>
+	</head>
+	<body>
+	    <h1>Konami Code</h1>
+
+         <script>
+            "use strict";
+
+            //variable for keys allowed
+            var allowedKeys = {
+                37: "left",
+                38: "up",
+                39: "right",
+                40: "down",
+                65: "a",
+                66: "b",
+            };
+            //konami code
+            var konami = ["up", "up","down","down", "left", "right", "left", "right", "b", "a"]
+            //variable to remember position user has reached
+            var userPosition = 0;
+
+            //event listener to catch every key pressed(keydown)
+            $(document).keydown(function(event){
+                //find out what key was pressed
+                var key = allowedKeys[event.keyCode];
+                //find out what key is needed for the code
+                var requiredKey = konami[userPosition];
+                //compare key pressed with key required for the code
+                if(key == requiredKey) {
+                //if correct key is pressed move to next key in code
+                    userPosition++;
+                //if user gets to last key, activate effects
+                if(userPosition == konami.length)
+                    activateEffects();
+                //or return key position to 0
+                } else
+                    userPosition = 0
+            });
+            //function for activateEffects with effects inside
+            function activateEffects() {
+                $("body").html("<img src=\"/img/congrats.gif\">");
+            }
+        </script>
+    </body>
+</html>

@@ -22,13 +22,13 @@
         </script> -->
             <div class=container>
 
-            <h1 id=heading>Fun with jQuery</h1>
+            <h1 id=mainHeading>Fun with jQuery</h1>
 
-            <p class=p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It was released in January 2006 at BarCamp NYC by John Resig. jQuery - Wikipedia, the free encyclopedia</p>
+            <p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It was released in January 2006 at BarCamp NYC by John Resig. jQuery - Wikipedia, the free encyclopedia</p>
             <p>jQuery is the most widely used JavaScript library on the internet today.</p>
             <p>
                 <ul>
-                    <h2 id=selectors>Selectors</h2>
+                    <h2 id=selectorsHeading>Selectors</h2>
                     <li class=listElements>ID Selector #id — Selects a single element with the given id attribute.</li>
                     <li class=listElements>Class Selector .class — Selects all elements with the given class.</li>
                     <li class=listElements>Element Selector element — Selects all elements with the given tag name.</li>
@@ -44,23 +44,40 @@
         
         "use strict";
 
-        
-        
-            $('.listElements').css('font-size', '20px');
-            $('.listElements').css('background-color', 'yellow');
-            //multiple css properties
-            $('#heading').css({
-                'background-color': 'yellow',
-                'text-decoration': 'underline',
+        //anons fx on the fly
+            $("#mainHeading").click(function() {
+                $("#mainHeading").css("background-color", "red");
             });
 
+            $("p").dblclick(function() {
+                $(this).css("font-size", "18px");
+            //using 'this' refers to the element only in this function.
+            });
+
+            $(".listElements").hover(
+                function() {
+                    $(this).css('background-color', 'red'); //hover on
+                },
+                function() {
+                    $(this).css('background-color', '#FFF'); //hover off
+                }
+            );
+
+    });
+        // //anons fx in steps
+        // var fn = function(){
+        //     alert("the btn works on double click";)
+        // };
+
+        // $('#btn-title').dblclick(fn);
+
+        // });
+
+        // $("main-title").hover(function)() {
+        //     $(this).css("font-size", "5px"); 
+        // }
 
 
-            $('.p').css('background-color', 'violet');
-
-            var contents = $('#heading').html();
-            alert(contents);
-        });
 
 
        
