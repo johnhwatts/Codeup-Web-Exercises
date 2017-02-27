@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Online Store</title>
+          <style>
+            table, th, tr, 
+            {
+                margin:10px 0;
+                border:solid 1px #333;
+                padding:2px 4px;
+                font:15px Verdana;
+            }
+            th {
+                font-weight:bold;
+            }
+        </style>
+    </head>
+    <body>
+
+    <h1>My Tool Store</h1>
+
+    <table id="products">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Categories</th>
+            </tr>
+        </thead>
+        <tbody id="insertProducts"></tbody>
+    </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script>
+    (function() {
+        "use strict";
+        // TODO: Create an ajax GET request for /data/inventory.json
+            $.get("/data/inventory.json", {
+            });
+            // TODO: Take the data from inventory.json and append it to the products table
+            //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+            //             its contents and fields
+            //       HINT: You will want to target #insertProducts for your new HTML elements
+            var tools = $.ajax("/data/inventory.json");
+
+            tools.done(function(data) {
+                // alert("AJAX call completed successfully!");
+                console.log("Data returned from server:");
+                console.log(data);
+
+                var addToTable = '';
+                
+                $.each(data, function (i, item) {
+            
+                    addToTable += '<tr><td>' + item.title + '</td><td>' + item.quantity + '</td><td>' + item.price + '</td><td>' + item.categories + '</td></tr>';
+                    console.log(item)
+                });
+        
+                $('#products').append(addToTable);
+            });
+
+    })();
+    </script>
+
+    </body>
+</html>
