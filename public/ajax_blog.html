@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ajax Blog</title>
+        <!-- latest compiled and minified CSS -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- custom CSS -->
+		<link rel="stylesheet" href="/css/yeti_theme.css">
+	</head>
+	<body>
+        <main class="container">
+    		<h1 class="jumbotron">Ajax Blog</h1>
+    		<div id=posts></div>
+
+        </main>
+        
+        <!-- minified jQuery -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        
+        <!-- Latest compiled and minified JavaScript -->
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script>
+		(function() {
+        "use strict";
+ 
+            $.get("/data/blog.json", {
+            });
+           
+            var blogPosts = $.ajax("/data/blog.json");
+
+            blogPosts.fail(function(data, status) {
+                console.log(data);
+                cosole.log(status);
+            });
+            
+            blogPosts.done(function(data) {
+                // alert("AJAX call completed successfully!");
+                console.log("Data returned from server:");
+                console.log(data);
+
+                var newPosts = '';
+              
+                $.each(data, function (index, post) {
+            
+                    newPosts +=  post.date + '</p><p><h3>' + post.title + '</h3></p><p>' + post.content + '</p><p><button>' + post.categories + '</button></p><p>';
+                    console.log(post);
+                });
+        
+                $('#posts').append(newPosts);
+        
+            });
+
+		})();
+	</script>
+	</body>
+</html>
