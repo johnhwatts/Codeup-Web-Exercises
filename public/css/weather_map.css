@@ -16,7 +16,7 @@ body {
   font-weight: 400;
 }
 
-.cityBox {
+.location {
 	height:100px;
 	font-size: 50px;
 	font-weight: 500;
@@ -39,6 +39,11 @@ body {
 	font-size: 20px;
 
 }
+
+#map-canvas {
+            height: 400px;
+            border-radius: 6px;
+        }
 
 /*.dayTwo {
 	height:200px;

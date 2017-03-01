@@ -18,10 +18,22 @@
               <h1>Weather Map App</h1>
             </div>
               <br>
-                <div class="col-sm-12 text-center cityBox"></div>
-                    
+                <!-- Location -->
+                <div class="col-sm-12 text-center location"></div>
               <br>
-                <p><a id="refresh" class="btn btn-primary btn-lg">Search city</a></p>
+                <!-- Google Map -->
+                <div id="map-canvas" class="col-sm-12"></div>
+                <br>
+                <div class="row">
+                <br>
+                <div class="span10">
+                    <form action="http://openweathermap.org/find?" method="GET" class="form-inline">
+                    <input type="text" class="input-large" placeholder="City, State, Country" />
+                    <br>
+                    <button type="submit" class="btn">Search</button>
+                    </form>
+                </div>
+                <br>
                 <div class="col-sm-12" id="weather"></div>
         </div>
     
@@ -32,57 +44,93 @@
         
         <!-- Latest compiled and minified JavaScript -->
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script>
-        "use strict";
-		
-        $("document").ready(function() {
 
-            var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8";
-            var url = "http://api.openweathermap.org/data/2.5/forecast/daily";
+        <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLHFv9BdlZ7MkMTsfv4Gogq4JLqiKLdWo"></script>
 
-            //make a function for making an AJAX request to the OpenWeatherMap API to return a weather object
-            function getWeather() {
-                // the .get method takes in 2 objects, thus the comma after url; the second object is the APPID 
-                $.get(url, {
-                    APPID: APPID,
-                    q: "San Antonio",
-                    // lat: 29,423017,
-                    // lon: -98.48527,
-                    cnt: 3,
-                    units: "imperial"
-                }).fail(function(data, status) {
-                    alert("Failed to load:" + status);
-                }).done(function(data) {
-                    console.log(data);
-                    console.log(data.city.name);
-                    console.log(data.list[0].humidity);
-                    console.log(data.list[0].weather[0].description)
 
-                    $('.cityBox').append(data.city.name);
+    	<script>
+            "use strict";
+    		
+            $("document").ready(function() {
 
-                    data.list.forEach(function(day){
-                    $('#weather').append("<div class='day'>" + (day.temp.max) + "°" + " / " + (day.temp.min) + "°" + "<br>" + '<img src="http://openweathermap.org/img/w/' + (day.weather[0].icon) + '.png">' + "<br>" + "Clouds: " + (day.weather[0].description) + "<br>" + "Humidity: " + (day.humidity) + "%" + "<br>" + "Wind: " + (day.speed) + " m/s" + "<br>" + "Pressure: " + (day.pressure) + "</div>");
-                });
-                    
-                    // $('.dayTwo').append((data.list[1].temp.max) + "°" + " / " + (data.list[1].temp.min) + "°" + "<br>" + (data.list[1].weather[0].icon) + "<br>" + "Clouds: " + (data.list[1].weather[0].description) + "<br>" + "Humidity: " + (data.list[1].humidity) + "%" + "<br>" + "Wind: " + (data.list[1].speed) + " m/s" + "<br>" + "Pressure: " + (data.list[1].pressure));
-                    
-                    // $('.dayThree').append((data.list[2].temp.max) + "°" + " / " + (data.list[2].temp.min) + "°" + "<br>" + (data.list[2].weather[0].icon) + "<br>" + "Clouds: " + (data.list[2].weather[0].description) + "<br>" + "Humidity: " + (data.list[2].humidity) + "%" + "<br>" + "Wind: " + (data.list[2].speed) + " m/s" + "<br>" + "Pressure: " + (data.list[2].pressure));
+                var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8";
+                var url = "http://api.openweathermap.org/data/2.5/forecast/daily";
+
+                 var mapOptions = {
+                        // Set the zoom level
+                        zoom: 10,
+                        streetViewControl: true,
+
+                        // This sets the center of the map at our location
+                        center: {
+                            lat:  29.423017,
+                            lng: -98.48527,
+                        }
+
+                    };
+
+                        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 
 
-                });
+                        // Create lat and long for our marker position
+                        var sanAntonio = { lat: 29.423017, lng: -98.48527 };
 
-            }   
+                        // Add the marker to our existing map
+                        var marker = new google.maps.Marker({
+                        position: sanAntonio,
+                        map: map,
+                        draggable: true,
+                        animation: google.maps.Animation.DROP
+                        });
+
+                        marker.addListener("dragend", function(){
+                            // console.log(this.position.lat());
+                            // console.log(this.position.lng());
+                            // console.log(marker.position.lat());
+                            getWeather(this.position.lat(), this.position.lng());
 
 
 
-            getWeather();
+                        });
 
 
+                //make a function for making an AJAX request to the OpenWeatherMap API to return a weather object
+                function getWeather(lat, lng) {
+                    // the .get method takes in 2 objects, thus the comma after url; the second object is the APPID 
+                    $.get(url, {
+                        APPID: APPID,
+                        // q: "San Antonio",
+                        lat: lat,
+                        lon: lng,
+                        cnt: 3,
+                        units: "imperial"
+                    }).fail(function(data, status) {
+                        alert("Failed to load:" + status);
+                    }).done(function(data) {
+                        console.log(data);
+                        console.log(data.city.name);
+                        console.log(data.list[0].humidity);
+                        console.log(data.list[0].weather[0].description)
+
+                        $('.location').append(data.city.name);
 
 
-        
-        });
-	</script>
+                        $('#weather').html("");
+
+
+                        data.list.forEach(function(day) {
+                        $('#weather').append("<div class='day'>" + parseInt(day.temp.max) + "°" + " / " + parseInt(day.temp.min) + "°" + "<br>" + '<img src="http://openweathermap.org/img/w/' + (day.weather[0].icon) + '.png">' + "<br>" + "Clouds: " + (day.weather[0].description) + "<br>" + "Humidity: " + (day.humidity) + "%" + "<br>" + "Wind: " + (day.speed) + " m/s" + "<br>" + "Pressure: " + (day.pressure) + "</div>");
+                        });
+                         
+                    });
+                 } 
+
+
+                getWeather(29.423017, -98.48527);
+
+            });
+    	</script>
 	</body>
 </html>
