@@ -17,21 +17,16 @@
             <div class="jumbotron">
               <h1>Weather Map App</h1>
             </div>
-              <p></p>
-              <div class="row">
+              <br>
                 <div class="col-sm-12 text-center cityBox"></div>
-              </div>
-              <div class="row">
-                <div class="col-sm-4 dayOne">
-                    <div class="row"></div>
-                        <div class="col-xs-12"></div>
-                </div>
-                <div class="col-sm-4 text-center dayTwo">Tomorrow</div>
-                <div class="col-sm-4 text-center dayThree">Day 3</div>
-              </div>
-                <p></p>
-                <p><a id="refresh" class="btn btn-primary btn-lg">Reset location to default</a></p>
+                    
+              <br>
+                <p><a id="refresh" class="btn btn-primary btn-lg">Search city</a></p>
+                <div class="col-sm-12" id="weather"></div>
         </div>
+    
+
+
         <!-- minified jQuery -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         
@@ -61,10 +56,17 @@
                     console.log(data);
                     console.log(data.city.name);
                     console.log(data.list[0].humidity);
+                    console.log(data.list[0].weather[0].description)
+
                     $('.cityBox').append(data.city.name);
-                    $('.dayOne').append((data.list[0].temp.max) + "°" + " / " + (data.list[0].temp.min) + "°");
-                    $('.dayOne').append(data.list[0].weather.icon);
-                    $('.dayOne').append(weather.list[0].clouds);
+
+                    data.list.forEach(function(day){
+                    $('#weather').append("<div class='day'>" + (day.temp.max) + "°" + " / " + (day.temp.min) + "°" + "<br>" + '<img src="http://openweathermap.org/img/w/' + (day.weather[0].icon) + '.png">' + "<br>" + "Clouds: " + (day.weather[0].description) + "<br>" + "Humidity: " + (day.humidity) + "%" + "<br>" + "Wind: " + (day.speed) + " m/s" + "<br>" + "Pressure: " + (day.pressure) + "</div>");
+                });
+                    
+                    // $('.dayTwo').append((data.list[1].temp.max) + "°" + " / " + (data.list[1].temp.min) + "°" + "<br>" + (data.list[1].weather[0].icon) + "<br>" + "Clouds: " + (data.list[1].weather[0].description) + "<br>" + "Humidity: " + (data.list[1].humidity) + "%" + "<br>" + "Wind: " + (data.list[1].speed) + " m/s" + "<br>" + "Pressure: " + (data.list[1].pressure));
+                    
+                    // $('.dayThree').append((data.list[2].temp.max) + "°" + " / " + (data.list[2].temp.min) + "°" + "<br>" + (data.list[2].weather[0].icon) + "<br>" + "Clouds: " + (data.list[2].weather[0].description) + "<br>" + "Humidity: " + (data.list[2].humidity) + "%" + "<br>" + "Wind: " + (data.list[2].speed) + " m/s" + "<br>" + "Pressure: " + (data.list[2].pressure));
 
 
 
