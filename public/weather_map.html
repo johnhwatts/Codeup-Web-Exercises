@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
      <!-- responsive CSS -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Weather Map</title>
+        <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+        <title>Weather Map</title>
        
         <!-- latest compiled and minified CSS -->
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- custom CSS -->
-		<link rel="stylesheet" href="/css/weather_map.css">
-	</head>
-	<body>
+        <link rel="stylesheet" href="/css/weather_map.css">
+    </head>
+    <body>
         <div class="container text-center">
-            <div class="jumbotron">
-              <h1>Weather Map App</h1>
+
+            <!-- Location -->
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 text-center location"></div>
+            <div class="col-sm-2"></div>
+             <div class="span10">
+                <form action="https://www.google.com/maps/" method="GET" class="form-inline">
+                <input type="text" class="input-large" placeholder="City, State, Country" />
+                <button type="submit" class="btn">Search</button>
+                </form>
             </div>
-              <br>
-                <!-- Location -->
-                <div class="col-sm-12 text-center location"></div>
-              <br>
-                <!-- Google Map -->
-                <div id="map-canvas" class="col-sm-12"></div>
-                <br>
-                <div class="row">
-                <br>
-                <div class="span10">
-                    <form action="http://openweathermap.org/find?" method="GET" class="form-inline">
-                    <input type="text" class="input-large" placeholder="City, State, Country" />
-                    <br>
-                    <button type="submit" class="btn">Search</button>
-                    </form>
-                </div>
-                <br>
-                <div class="col-sm-12" id="weather"></div>
+            <br>
+            <div class="col-sm-12" id="weather"></div>
+            <br>
+                
+            <!-- Google Map -->
+            <div class="col-sm-2"></div>
+            <div id="map-canvas" class="col-sm-8"></div>
+            <div class="col-sm-2"></div>
+            <br>
+            <div class="row">
+            <br>
+            
+            <br>
+                
+            <!-- Weather -->
+            <div class="col-sm-12" id="weather"></div>
         </div>
     
 
 
         <!-- minified jQuery -->
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         
         <!-- Latest compiled and minified JavaScript -->
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLHFv9BdlZ7MkMTsfv4Gogq4JLqiKLdWo"></script>
 
 
-    	<script>
+        <script>
             "use strict";
-    		
+            
             $("document").ready(function() {
 
                 var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8";
@@ -113,7 +120,7 @@
                         console.log(data.city.name);
                         console.log(data.list[0].humidity);
                         console.log(data.list[0].weather[0].description)
-
+                        $('.location').html("");
                         $('.location').append(data.city.name);
 
 
@@ -131,6 +138,6 @@
                 getWeather(29.423017, -98.48527);
 
             });
-    	</script>
-	</body>
+        </script>
+    </body>
 </html>
