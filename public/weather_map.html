@@ -10,9 +10,12 @@
        
         <!-- latest compiled and minified CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
         <!-- custom CSS -->
         <link rel="stylesheet" href="/css/weather_map.css">
+   
     </head>
+    
     <body>
         <div class="container text-center">
 
@@ -21,9 +24,9 @@
             <div class="col-sm-8 text-center location"></div>
             <div class="col-sm-2"></div>
              <div class="span10">
-                <form action="https://www.google.com/maps/" method="GET" class="form-inline">
-                <input type="text" class="input-large" placeholder="City, State, Country" />
-                <button type="submit" class="btn">Search</button>
+                <form method="GET" class="form-inline">
+                <input type="text" class="input-large" placeholder="City, State, Country"/>
+                <button type="submit" id="go" class="btn">Search</button>
                 </form>
             </div>
             <br>
@@ -44,8 +47,6 @@
             <div class="col-sm-12" id="weather"></div>
         </div>
     
-
-
         <!-- minified jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         
@@ -55,7 +56,6 @@
         <!-- Load the Google Maps API [DON'T FORGET TO USE A KEY] -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLHFv9BdlZ7MkMTsfv4Gogq4JLqiKLdWo"></script>
 
-
         <script>
             "use strict";
             
@@ -64,43 +64,40 @@
                 var APPID = "7f8e3aa0aad113510e0c1eaafd1c17b8";
                 var url = "http://api.openweathermap.org/data/2.5/forecast/daily";
 
-                 var mapOptions = {
-                        // Set the zoom level
-                        zoom: 10,
-                        streetViewControl: true,
+                var mapOptions = {
+                    // Set the zoom level
+                    zoom: 10,
+                    streetViewControl: true,
 
-                        // This sets the center of the map at our location
-                        center: {
-                            lat:  29.423017,
-                            lng: -98.48527,
-                        }
+                    // This sets the center of the map at our location
+                    center: {
+                        lat:  29.423017,
+                        lng: -98.48527,
+                    }
 
-                    };
+                };
 
-                        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-
-
-                        // Create lat and long for our marker position
-                        var sanAntonio = { lat: 29.423017, lng: -98.48527 };
-
-                        // Add the marker to our existing map
-                        var marker = new google.maps.Marker({
-                        position: sanAntonio,
-                        map: map,
-                        draggable: true,
-                        animation: google.maps.Animation.DROP
-                        });
-
-                        marker.addListener("dragend", function(){
-                            // console.log(this.position.lat());
-                            // console.log(this.position.lng());
-                            // console.log(marker.position.lat());
-                            getWeather(this.position.lat(), this.position.lng());
+                var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 
 
-                        });
+                // Create lat and long for our marker position
+                var sanAntonio = { lat: 29.423017, lng: -98.48527 };
+
+                // Add the marker to our existing map
+                var marker = new google.maps.Marker({
+                position: sanAntonio,
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP
+                });
+
+                marker.addListener("dragend", function(){
+                    // console.log(this.position.lat());
+                    // console.log(this.position.lng());
+                    // console.log(marker.position.lat());
+                    getWeather(this.position.lat(), this.position.lng());
+                });
 
 
                 //make a function for making an AJAX request to the OpenWeatherMap API to return a weather object
@@ -122,6 +119,10 @@
                         console.log(data.list[0].weather[0].description)
                         $('.location').html("");
                         $('.location').append(data.city.name);
+                        // $('.location').append(" ", lat, lng);
+
+                        //TODO: add info window to marker to show text "Drag marker to find weather in different location"
+                        //      create another column for lat and long to show to user
 
 
                         $('#weather').html("");
