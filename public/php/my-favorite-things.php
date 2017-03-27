@@ -1,8 +1,13 @@
 <?php
 
 //Create an array of your favorite things.
+function pageController() {
+	$data = [];
 
-$myFavThings = ['food', 'beer', 'cycling', 'fishing', 'music'];
+	$data["myFavThings"] = ['food', 'beer', 'cycling', 'fishing', 'music'];
+	return $data;
+}
+extract(pageController());
 
 ?>
 
@@ -17,8 +22,8 @@ Use CSS to add a light gray background on every other row for a nice effect. -->
     <title>My Favorite Things</title>
 	
 	<!-- CSS -->
-	<meta charset="UTF-8"><!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet"><!-- latest compiled and minified CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"><!-- custom CSS -->
 	<link rel="stylesheet" type="text/css" href="/css/my-favorite-things.css"> 
@@ -33,7 +38,7 @@ Use CSS to add a light gray background on every other row for a nice effect. -->
      		<th>The Things</th>
      	</tr>
      	
-    	<?php foreach ($myFavThings as $myFavThing) { ?>
+    	<?php foreach ($myFavThings as $myFavThing): ?>
     	    <tr><td><?= $myFavThing; ?></td></tr>
     	<?php endforeach; ?>
     	

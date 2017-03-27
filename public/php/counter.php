@@ -6,6 +6,20 @@
  * The pageController function handles all processing for this page.
  * @return array An associative array of data to be used in rendering the html view.
  */
+
+//"null coalesce" = if a value exists, get that value and assign to variable, else assign default value.
+// isset returns a boolean true/false.
+
+// function pageController () {
+// $data = [];
+// // if(isset($_GET['counter'])) {
+// //     $counter = $_GET['counter'];
+// // } else {
+// //     $counter = 0;
+// // }
+// return $data;
+// }
+
 function pageController()
 {
     if (! isset($_GET['counter'])) {

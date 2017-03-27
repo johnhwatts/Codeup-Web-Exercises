@@ -1,6 +1,23 @@
 <?php
 
-var_dump($_POST);
+// var_dump($_POST);
+
+
+function pageController() {
+    $data = [];
+    $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+    //if a value exists, get that value and assign to variable, else assign default value
+    if (! empty($_POST['username']) && ! empty($_POST['password'])) {
+        if ($username == 'guest' && $password == 'password') {
+        header("Location: http://codeup.dev/authorized.php");
+        } else {
+        echo "Login Failed";
+        }
+    }
+    return $data;
+}
+extract(pageController());
 
 ?>
 
@@ -17,8 +34,8 @@ var_dump($_POST);
     </head>
     <body>
         <form name="login" method="POST">
-            Username<input type="text" name="userid"/>
-            Password<input type="password" name="pswrd"/>
+            Username<input type="text" name="username"/>
+            Password<input type="password" name="password"/>
             <input type="submit"/>
         </form>
     	
