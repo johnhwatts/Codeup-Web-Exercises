@@ -13,7 +13,7 @@
 
     <!-- Bootstrap -->
     <link href=
-    "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel=
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel=
     "stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -68,7 +68,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
     <script src=
-    "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js">
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
     </script>
 </body>
 </html>
