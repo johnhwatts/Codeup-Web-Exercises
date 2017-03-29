@@ -4,7 +4,7 @@ session_start();
 
 // var_dump($_SESSION);
 
-	echo "Logout Successful";
+	// echo "Logout Successful";
     session_destroy();
     // header("Location: /login.php");
 ?>
@@ -21,7 +21,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="/css/counter.css">
     </head>
     <body>
-        <h1></h1>
+        <h1>LOGGED OUT SUCCESSFULLY</h1>
 
     </body>
 </html>

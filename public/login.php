@@ -11,7 +11,7 @@
     $username = isset($_POST['username']) ? htmlspecialchars(strip_tags($_POST['username'])) : "";
     $password = isset($_POST['password']) ? htmlspecialchars(strip_tags($_POST['password'])) : "";
 
-    if($username == "guest" && $password == "password") {
+    if($username == "admin" && $password == "pass") {
       $_SESSION['logged_in_user'] = $_POST['username'];
         header("Location: /authorized.php");
         } else {
