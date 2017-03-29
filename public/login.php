@@ -29,12 +29,21 @@
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="https://fonts.googleapis.com/css?family=Anton" rel=
-    "stylesheet"><!-- latest compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+
+    <!-- latest compiled and minified CSS -->
     <link href=
     "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    rel="stylesheet"><!-- custom CSS -->
-    <link href="/css/counter.css" rel="stylesheet" type="text/css">
+    rel="stylesheet">
+    <!-- custom CSS -->
+    <style>
+    h2 {
+      text-align: center;
+    }
+    body {
+      font-family: 'Lora', serif;
+    }
+    </style>
 </head>
 
 <body>
