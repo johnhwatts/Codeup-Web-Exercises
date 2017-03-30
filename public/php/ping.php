@@ -1,5 +1,6 @@
 <?php
 require_once 'functions.php';
+require_once '../../Input.php';
 
 // Require or include statements are allowed here. All other code goes in the pageController function.
 
@@ -8,11 +9,14 @@ require_once 'functions.php';
  * @return array An associative array of data to be used in rendering the html view.
  */
 function pageController()
-{
-    if (! isset($_GET['counter'])) {
-		$_GET['counter'] = 0;
-	}
-	return $_GET;
+{   
+    $data = [];
+    $data['counter'] = Input::get('counter');
+    return $data;
+ //    if (! isset($_GET['counter'])) {
+	// 	$_GET['counter'] = 0;
+	// }
+	// return $_GET;
 }
 
 // Call the pageController function and extract all the returned array as local variables.
