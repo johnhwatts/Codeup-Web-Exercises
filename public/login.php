@@ -1,18 +1,17 @@
 <?php
-  session_start();
 
-  require 'php/functions.php';
-  require_once '../Auth.php';
-  require_once '../Input.php';
+require_once '../Auth.php';
+require_once '../Input.php';
 
-  if (Input::has('username') && Input::has('password')) {
-    Auth::attempt(Input::get('username'), Input::get('password'));
-  } 
+session_start();
 
-  if (Auth::check() == true) {
-    header('Location: authorized.php');
-    die;
-  }
+if (Input::has('username') && Input::has('password')) {
+  Auth::attempt(Input::get('username'), Input::get('password'));
+} 
+if (Auth::check() == true) {
+  header('Location: authorized.php');
+  die;
+}
 ?>
 
 

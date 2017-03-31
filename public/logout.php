@@ -1,9 +1,9 @@
 <?php
 
-session_start();
-
 require_once '../Auth.php';
 require_once '../Input.php';
+
+session_start();
 
 session_destroy();
 

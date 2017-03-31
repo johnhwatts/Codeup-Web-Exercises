@@ -14,26 +14,22 @@ class Auth {
         		$authLog->logInfo("User " . $username . " logged in.");
             	header('Location: authorized.php');
             	die;
-        	} 
+        	}
         } else {
-        	$authLog->logInfo("User " . $username . " failed to log in!");
+        	$authLog->logError("User " . $username . " failed to log in!");
 
         }
-    } 
+    }
 
 
 	public static function check() {
-		if (isset($_SESSION['logged_in_user'])) {
-			return true;
-		} else {
-			return false;
-		}
+		return isset($_SESSION['logged_in_user']);
 
 	}
 
 	public static function user() {
-		if (Auth::check() == 'TRUE') {
-			echo $_SESSION['logged_in_user'];
+		if (static::check() == 'TRUE') {
+			return $_SESSION['logged_in_user'];
 		}
 	}
 
