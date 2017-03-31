@@ -1,19 +1,17 @@
 <?php
   session_start();
 
-  $message = "";
-  // check if the form was submitted
+  require 'php/functions.php';
+  require_once '../Auth.php';
+  require_once '../Input.php';
 
-  if(!empty($_POST)) {
-    $username = isset($_POST['username']) ? htmlspecialchars(strip_tags($_POST['username'])) : "";
-    $password = isset($_POST['password']) ? htmlspecialchars(strip_tags($_POST['password'])) : "";
+  if (Input::has('username') && Input::has('password')) {
+    Auth::attempt(Input::get('username'), Input::get('password'));
+  } 
 
-    if($username == "admin" && $password == "pass") {
-      $_SESSION['logged_in_user'] = $_POST['username'];
-        header("Location: /authorized.php");
-        } else {
-          print ("Please retry your username or password");
-      }
+  if (Auth::check() == true) {
+    header('Location: authorized.php');
+    die;
   }
 ?>
 

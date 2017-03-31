@@ -1,10 +1,14 @@
 <?php
 session_start();
 
-     if(!isset($_SESSION['logged_in_user'])) // If session is not set then redirect to Login Page
+require_once '../Auth.php';
+require_once '../Input.php';
+
+if(Auth::check() == false) // If session is not set then redirect to Login Page
 {
-   header("Location: /login.php");
-}
+   header("Location: login.php");
+   die;
+} 
 
 ?>
 
@@ -47,7 +51,7 @@ session_start();
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h1 class="message">You have logged in successfully</h1>
+                <h1 class="message">Hi, <?=Auth::user() ?>. You have logged in successfully </h1>
             </div>
         </div>   
 
