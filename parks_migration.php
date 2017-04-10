@@ -5,7 +5,7 @@ define('DB_NAME', 'parks_db');
 define('DB_USER', 'parks_user');
 define('DB_PASSWORD', 'parks');
 
-require 'db_connect.php';
+require __DIR__ . '/db_connect.php';
 
 $query = 'DROP TABLE IF EXISTS national_parks;';
 $connection->exec($query);
