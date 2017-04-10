@@ -1,5 +1,5 @@
 <?php
-require 'parks_migration.php';
+require __DIR__ . '/parks_migration.php';
 
 $deleteRecords = 'TRUNCATE national_parks';
 $connection->exec($deleteRecords);

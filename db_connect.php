@@ -10,6 +10,7 @@
 // To connect to a MySQL database we'll use a PDO oci_fetch_object
 // The PDO object will need a DSN
 // require __DIR__ . '/constants.php'; //Don't forget the forward slash at the beginning, when using __DIR__
+require __DIR__ . '/constants.php';
 
 try {
   $connection = new PDO(
