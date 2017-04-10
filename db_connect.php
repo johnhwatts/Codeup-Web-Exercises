@@ -6,7 +6,10 @@
 // 3. Database name. employees
 // 4. username: vagrant
 // 5. password: vagrant
-require __DIR__ . '/constants.php'; //Don't forget the forward slash at the beginning, when using __DIR__
+
+// To connect to a MySQL database we'll use a PDO oci_fetch_object
+// The PDO object will need a DSN
+// require __DIR__ . '/constants.php'; //Don't forget the forward slash at the beginning, when using __DIR__
 
 try {
   $connection = new PDO(
