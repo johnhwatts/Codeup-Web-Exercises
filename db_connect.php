@@ -21,7 +21,7 @@ try {
 
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 // This is optional, we just want to show some output to confirm the connection was successful
-echo $connection->getAttribute(PDO::ATTR_CONNECTION_STATUS), PHP_EOL;
+// echo $connection->getAttribute(PDO::ATTR_CONNECTION_STATUS), PHP_EOL;
 } catch (PDOException $e) {
     echo $e->getMessage(), PHP_EOL;
 }
