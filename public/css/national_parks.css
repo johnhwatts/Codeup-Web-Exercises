@@ -1,13 +1,21 @@
 body {
   font-family: 'PT Mono', monospace;
-  background: url("/img/nps.gif") no-repeat center center fixed;
+  background: url("/img/nps.gif") no-repeat center bottom fixed;
   background-size: 15%;
-  background-position: center bottom;
 }
 
 h1 {
   text-align: center;
+  text-decoration: underline;
+}
+
+h2 {
+  text-decoration: underline;
 }
 a:hover {
   text-decoration: none;
+}
+
+.form-control {
+  width: 40%;
 }

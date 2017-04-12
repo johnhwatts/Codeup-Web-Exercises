@@ -10,7 +10,7 @@ class Input
      */
     public static function has($key)
     {
-        return isset($_REQUEST[$key]); 
+        return isset($_REQUEST[$key]);
     }
 
     /**
@@ -23,7 +23,7 @@ class Input
     public static function get($key, $default = null)
     {
         if (static::has($key)) {
-        return $_REQUEST[$key];
+        return trim($_REQUEST[$key]);
         } else {
         return $default;
         }

@@ -9,24 +9,46 @@ require __DIR__ . "/../db_connect.php";
 require_once '../Input.php';
 
 $page = Input::get('page', 1);
-$limit = '4';
+$limit = 4;
 $offset = $limit * ($page - 1);
 $totalParks = $connection->query("SELECT count (*) FROM national_parks")->fetchColumn();
+
+if($_POST) {
+$userInput = "INSERT into national_parks (name, location, date_established, area_in_acres, description)
+                                   VALUES (:name, :location, :date_established, :area_in_acres, :description)";
+$statement = $connection->prepare($userInput);
+$statement->bindValue(':name', Input::get("nameInput"), PDO::PARAM_STR);
+$statement->bindValue(':location', Input::get("locationInput"), PDO::PARAM_STR);
+$statement->bindValue(':date_established', Input::get("dateInput"), PDO::PARAM_STR);
+$statement->bindValue(':area_in_acres', Input::get("areaInput"), PDO::PARAM_STR);
+$statement->bindValue(':description', Input::get("descInput"), PDO::PARAM_STR);
+
+$statement->execute();
+header('location: national_parks.php');
+}
 
 // protect from looking at blank pages past the number of results
 
 $maxPage = ($totalParks / $limit) - 1;
 
 // get all parks with a limit per page
+//
+// $query = "SELECT * FROM national_parks LIMIT {$limit} OFFSET {$offset}";
+// $statement = $connection->query($query);
+// $parks = [];
 
-$query = "SELECT * FROM national_parks LIMIT {$limit} OFFSET {$offset}";
-$statement = $connection->query($query);
-$parks = [];
+// get all parks with a limit per page using prepare statments
+$statement = $connection->prepare("SELECT * FROM national_parks LIMIT :limit OFFSET :offset");
+$statement->bindValue(':limit', $limit, PDO::PARAM_INT);
+$statement->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+$statement->execute();
 
 while ($park = $statement->fetch(PDO::FETCH_ASSOC))
 {
 $parks[] = $park;
 }
+
 
 ?>
 
@@ -91,6 +113,34 @@ $parks[] = $park;
                           </div>
                       </a>
               <?php } ?>
+              <h2>Add a Park</h2>
+              <form method="POST">
+                <div class="form-group">
+                  <label for="nameInput">Name</label>
+                  <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label for="locationInput">Location</label>
+                  <input type="text" class="form-control" id="locationInput" name="locationInput" placeholder="Location">
+                </div>
+                <div class="form-group">
+                  <label for="dateInput">Date Established</label>
+                  <input type="text" class="form-control" id="dateInput" name="dateInput" placeholder="YYYY-MM-DD">
+                </div>
+                <div class="form-group">
+                  <label for="areaInput">Area in Acres</label>
+                  <input type="text" class="form-control" id="areaInput" name="areaInput" placeholder="1111.11">
+                </div>
+                <div class="form-group">
+                  <label for="descInput">Description</label>
+                  <input type="text" class="form-control" id="descInput" name="descInput" placeholder="Description">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i class="icon-user icon-white"></i> Submit
+                </button>
+              </form>
+            </div>
+
     </main>
 </body>
 
