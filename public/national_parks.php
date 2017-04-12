@@ -8,10 +8,13 @@ require __DIR__ . "/../db_connect.php";
 
 require_once '../Input.php';
 
-$page = Input::get('page');
+$page = Input::get('page', 1);
 $limit = '4';
-$offset = $limit * $page;
+$offset = $limit * ($page - 1);
 $totalParks = $connection->query("SELECT count (*) FROM national_parks")->fetchColumn();
+
+// protect from looking at blank pages past the number of results
+
 $maxPage = ($totalParks / $limit) - 1;
 
 // get all parks with a limit per page
@@ -75,16 +78,15 @@ $parks[] = $park;
                 <?php endforeach; ?>
             </table>
         </div>
-        <ul class="pager">
-            <li>
-                <?php if ($page > 0): ?><a href="/national_parks.php?page=<?=$page-1?>">Previous Page</a>
-                <?php endif; ?>
-            </li>
-            <li>
-                <?php if ($page < $maxPage): ?><a href="/national_parks.php?page=<?=$page+1?>">Next Page</a>
-                <?php endif; ?>
-            </li>
-        </ul>
+
+              <?php $page = 1;
+                  for ($i = 1; $i <= $totalParks; $i+=$limit) { ?>
+                      <a href="national_parks.php?page=<?=$page?>">
+                          <div class="btn btn-primary">
+                              <?=$page++?>
+                          </div>
+                      </a>
+              <?php } ?>
     </main>
 </body>
 
