@@ -1,10 +1,5 @@
 <?php
 
-define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'parks_db');
-define('DB_USER', 'parks_user');
-define('DB_PASSWORD', 'parks');
-
 require __DIR__ . '/db_connect.php';
 
 $query = 'DROP TABLE IF EXISTS national_parks;';
@@ -16,6 +11,7 @@ $createParksTable = 'CREATE TABLE national_parks (
   location varchar(100),
   date_established DATE,
   area_in_acres DOUBLE UNSIGNED,
+  description TEXT,
   PRIMARY KEY (id)
 )';
 $connection->exec($createParksTable);

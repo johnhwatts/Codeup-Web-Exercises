@@ -56,6 +56,7 @@ $parks[] = $park;
                         <th>Location</th>
                         <th>Date Established</th>
                         <th>Area in Acres</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <?php foreach($parks as $park): ?>
@@ -72,6 +73,9 @@ $parks[] = $park;
                         </td>
                         <td>
                             <?= $park['area_in_acres'] ?>
+                        </td>
+                        <td>
+                            <?= $park['description'] ?>
                         </td>
                     </tr>
                 </tbody>
