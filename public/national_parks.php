@@ -14,17 +14,18 @@ $offset = $limit * ($page - 1);
 $totalParks = $connection->query("SELECT count (*) FROM national_parks")->fetchColumn();
 
 if($_POST) {
-$userInput = "INSERT into national_parks (name, location, date_established, area_in_acres, description)
-                                   VALUES (:name, :location, :date_established, :area_in_acres, :description)";
-$statement = $connection->prepare($userInput);
-$statement->bindValue(':name', Input::get("nameInput"), PDO::PARAM_STR);
-$statement->bindValue(':location', Input::get("locationInput"), PDO::PARAM_STR);
-$statement->bindValue(':date_established', Input::get("dateInput"), PDO::PARAM_STR);
-$statement->bindValue(':area_in_acres', Input::get("areaInput"), PDO::PARAM_STR);
-$statement->bindValue(':description', Input::get("descInput"), PDO::PARAM_STR);
+  $userInput = "INSERT into national_parks (name, location, date_established, area_in_acres, description)
+              VALUES (:name, :location, :date_established, :area_in_acres, :description)";
 
-$statement->execute();
-header('location: national_parks.php');
+    $statement = $connection->prepare($userInput);
+    $statement->bindValue(':name', Input::get("nameInput"), PDO::PARAM_STR);
+    $statement->bindValue(':location', Input::get("locationInput"), PDO::PARAM_STR);
+    $statement->bindValue(':date_established', Input::get("dateInput"), PDO::PARAM_STR);
+    $statement->bindValue(':area_in_acres', Input::get("areaInput"), PDO::PARAM_STR);
+    $statement->bindValue(':description', Input::get("descInput"), PDO::PARAM_STR);
+
+    $statement->execute();
+    header('location: national_parks.php');
 }
 
 // protect from looking at blank pages past the number of results
@@ -114,32 +115,40 @@ $parks[] = $park;
                       </a>
               <?php } ?>
               <h2>Add a Park</h2>
-              <form method="POST">
-                <div class="form-group">
-                  <label for="nameInput">Name</label>
-                  <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Name">
-                </div>
-                <div class="form-group">
-                  <label for="locationInput">Location</label>
-                  <input type="text" class="form-control" id="locationInput" name="locationInput" placeholder="Location">
-                </div>
-                <div class="form-group">
-                  <label for="dateInput">Date Established</label>
-                  <input type="text" class="form-control" id="dateInput" name="dateInput" placeholder="YYYY-MM-DD">
-                </div>
-                <div class="form-group">
-                  <label for="areaInput">Area in Acres</label>
-                  <input type="text" class="form-control" id="areaInput" name="areaInput" placeholder="1111.11">
-                </div>
-                <div class="form-group">
-                  <label for="descInput">Description</label>
-                  <input type="text" class="form-control" id="descInput" name="descInput" placeholder="Description">
-                </div>
-                <button type="submit" class="btn btn-primary">
-                  <i class="icon-user icon-white"></i> Submit
-                </button>
+              <div class = "container">
+                <div class = "row">
+                  <div class = "col-md-8 col-md-offset-4">
+                    <form method="POST">
+                      <div class="form-group">
+                        <label class ="formBoxTitle" for="nameInput">Name</label>
+                          <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Name">
+                      </div>
+                      <div class="form-group">
+                        <label class ="formBoxTitle" for="locationInput">Location</label>
+                        <input type="text" class="form-control" id="locationInput" name="locationInput" placeholder="Location">
+                      </div>
+                      <div class="form-group">
+                        <label class ="formBoxTitle" for="dateInput">Date Established</label>
+                        <input type="text" class="form-control" id="dateInput" name="dateInput" placeholder="YYYY-MM-DD">
+                      </div>
+                      <div class="form-group">
+                        <label class ="formBoxTitle" for="areaInput">Area in Acres</label>
+                        <input type="text" class="form-control" id="areaInput" name="areaInput" placeholder="1111.11">
+                      </div>
+                      <div class="form-group">
+                        <label class ="formBoxTitle" for="descInput">Description</label>
+                        <input type="text" class="form-control" id="descInput" name="descInput" placeholder="Description">
+                      </div>
+                      <div class="col-md-4 text-center">
+                      <button type="submit" class="btn btn-primary">
+                        <i class="icon-user icon-white"></i> Submit
+                      </button>
+                    </div>
               </form>
             </div>
+          </div>
+        </div>
+      </div>
 
     </main>
 </body>
